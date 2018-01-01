@@ -9,11 +9,10 @@ class Index extends Controller
 {
     public function indexAction()
     {
-        $viewVariables = [
-            'context' => $this->context
-        ];
-
-        View::renderTemplate('Index/index.twig', $viewVariables);
+//        $viewVariables = [
+//            'context' => $this->context
+//        ];
+        //        View::renderTemplate('Index/index.twig', $viewVariables);
     }
 
     public function testAction()

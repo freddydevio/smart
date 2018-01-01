@@ -8,3 +8,4 @@ set_exception_handler('Core\Error::exceptionHandler');
 
 $app = new \Core\Application();
 $app->run();
+

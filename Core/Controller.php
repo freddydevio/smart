@@ -6,25 +6,16 @@ abstract class Controller
 {
     protected $context = null;
 
-    /**
-     * Parameters from the matched route
-     * @var array
-     */
-    protected $route_params = [];
-    /**
-     * Class constructor
-     *
-     * @param array $route_params  Parameters from the route
-     *
-     * @return void
-     */
-    public function __construct($route_params)
+    protected $routeParams = [];
+
+    public function __construct($routeParams)
     {
         $contextFactory = new ContextFactory();
         $this->context = $contextFactory->getContext();
 
-        $this->route_params = $route_params;
+        $this->routeParams = $routeParams;
     }
+
     /**
      * Magic method called when a non-existent or inaccessible method is
      * called on an object of this class. Used to execute before and after
@@ -48,7 +39,6 @@ abstract class Controller
             throw new \Exception("Method $method not found in controller " . get_class($this));
         }
     }
-
     /**
      * Before filter - called before an action method.
      *

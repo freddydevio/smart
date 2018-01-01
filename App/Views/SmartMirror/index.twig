@@ -2,6 +2,8 @@
 
 {% block title %}Smart{% endblock %}
 
+{% block bodyClass %}is-ctl-{{ controller }} is-act-{{ action }}{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ context.assetsUrl }}/less/app.css" rel="stylesheet">
@@ -10,6 +12,6 @@
 {% block container %}
 
     <h1>Welcome</h1>
-    <img src="{{ context.assetsUrl }}/img/logo.svg">
+    <img width="200" height="200" src="{{ context.assetsUrl }}/img/logo.png">
 
 {% endblock %}

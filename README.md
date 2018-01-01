@@ -1,1 +1,1 @@
-"# smart" 
+# Smart

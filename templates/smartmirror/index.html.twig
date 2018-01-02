@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="/css/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+{% endblock %}
+
+{% block javascriptsHeader %}
+    {{ parent() }}
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="/js/app.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment-with-locales.min.js"></script>
+    <script src="https://cdn.rawgit.com/monkeecreate/jquery.simpleWeather/master/jquery.simpleWeather.min.js"></script>
+{% endblock %}
+
+{% block container %}
+    {{ parent() }}
+    <div class="grid">
+        <div class="widget small datetime-widget centered-content">
+            <div class="content">
+                <span class="time"></span>
+                <span class="date"></span>
+            </div>
+        </div>
+        <div class="widget small weather-widget centered-content">
+            <div class="content">
+                <div class="columns">
+                    <div class="row">
+                        <div class="current-weather-icon"></div>
+                        <span class="current-weather"></span>
+                    </div>
+                    <div class="row">
+                        <span class="wind-speed"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="widget large smart-widget centered-content">
+            <div class="content">
+                <span class="logo">Smart</span>
+            </div>
+        </div>
+    </div>
+{% endblock %}

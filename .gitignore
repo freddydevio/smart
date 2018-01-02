@@ -1,6 +1,5 @@
 
 ###> symfony/framework-bundle ###
-.env
 /public/bundles/
 /var/
 /vendor/
@@ -14,3 +13,7 @@
 /node_modules/
 /public/build/
 ###< symfony/webpack-encore-pack ###
+composer.lock
+symfony.lock
+yarn.lock
+.idea

@@ -1,0 +1,22 @@
+{% extends 'base.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="/App/Assets/frontend/less/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="/App/Assets/frontend/js/jquery.min.js"></script>
+    <script src="/App/Assets/frontend/js/vue.js"></script>
+    <script src="/App/Assets/frontend/js/app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment-with-locales.min.js"></script>
+{% endblock %}
+
+{% block container %}
+    {{ parent() }}
+    {% include 'smart-mirror/container.twig' %}
+{% endblock %}

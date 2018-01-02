@@ -1,19 +1,4 @@
-
-###> symfony/framework-bundle ###
-/public/bundles/
-/var/
-/vendor/
-###< symfony/framework-bundle ###
-*.css
-###> symfony/web-server-bundle ###
-.web-server-pid
-###< symfony/web-server-bundle ###
-
-###> symfony/webpack-encore-pack ###
-/node_modules/
-/public/build/
-###< symfony/webpack-encore-pack ###
-composer.lock
-symfony.lock
-yarn.lock
 .idea
+/vendor/
+*.lock
+#*.css

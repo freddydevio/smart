@@ -1,0 +1,17 @@
+
+<div class="widget {{ options.size }} reminder-widget">
+    <div class="columns">
+        <span class="widget--title">Erinnerungen</span>
+        <div class="content">
+            <div class="columns">
+                {% for reminder in data %}
+                    <div class="row">
+                        <div class="checkbox {% if reminder.done %}done{% endif %}"></div>
+                        <span class="label">{{ reminder.label }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+

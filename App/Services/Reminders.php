@@ -10,10 +10,10 @@ class Reminders extends Service
     {
         $reminders = [
                 [
-                    'label' => 'Opa Geburtstag',
+                    'label' => 'Prepare github pages',
                     'done' => true,
                 ], [
-                    'label' => 'FDDB einrichten',
+                    'label' => 'Create more widgets and ability to extend widgets and services',
                     'done' => false
                 ]
         ];

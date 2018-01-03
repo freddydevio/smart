@@ -4,7 +4,7 @@ namespace App\Services;
 
 use Core\Service;
 
-class Reminders extends Service
+class Reminders implements Service
 {
     public function getReminders()
     {

@@ -2,12 +2,19 @@
 
 namespace Core;
 
+/**
+ * Class ServiceManager
+ * @package Core
+ */
 class ServiceManager
 {
-    public function getService($serviceName)
+    /**
+     * @param $service
+     * @return mixed
+     */
+    public function getService($service)
     {
-        $class = 'App\Services\\'.$serviceName;
-        $service = new $class;
+        $service = new $service;
         return $service;
     }
 }

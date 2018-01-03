@@ -2,7 +2,7 @@
 
 namespace Core;
 
-class Service
+interface Service
 {
 
 }

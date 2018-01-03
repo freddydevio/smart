@@ -15,13 +15,12 @@ class NewsController extends Controller
     protected function before()
     {
         parent::before();
-
         $service = new ServiceManager();
-        $this->service = $service->getService('News');
+        $this->service = $service->getService(News::class);
     }
 
     public function indexAction()
     {
-        return $this->service->getNews(5);
+        print_r($this->service->getNews(5));
     }
 }

@@ -4,7 +4,7 @@ namespace App\Services;
 
 use Core\Service;
 
-class News extends Service
+class News implements Service
 {
     public function getNews($maxCount)
     {

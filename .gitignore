@@ -1,4 +1,5 @@
 .idea
 /vendor/
 *.lock
-#*.css
+*.css
+*.env

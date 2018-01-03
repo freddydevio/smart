@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Services\FitnessManager;
+use App\Services\News;
+use App\Services\Reminders;
 use Core\Controller;
 use Core\ServiceManager;
 use Core\View;
@@ -13,11 +16,14 @@ class SmartMirrorController extends Controller
         parent::before();
         $serviceManager = new ServiceManager();
 
-        $reminderService = $serviceManager->getService('Reminders');
+        $reminderService = $serviceManager->getService(Reminders::class);
         $reminderList = $reminderService->getReminders();
 
-        $newsService = $serviceManager->getService('News');
+        $newsService = $serviceManager->getService(News::class);
         $newsList = $newsService->getNews(5);
+
+        $fitnessManagerService = $serviceManager->getService(FitnessManager::class);
+        $fitnessProfile = $fitnessManagerService->getProfile();
 
         $this->viewParams['widgets'] = [
             [

@@ -16,7 +16,7 @@ class ReminderController extends Controller
         parent::before();
 
         $service = new ServiceManager();
-        $this->service = $service->getService('Reminders');
+        $this->service = $service->getService(Reminders::class);
     }
 
     public function indexAction()

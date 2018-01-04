@@ -7,10 +7,17 @@ abstract class Controller
     protected $viewParams = [];
 
     protected $route_params = [];
+    /** @var ServiceManager $serviceManager */
+    protected $serviceManager;
+    /** @var \Core\Router $router */
+    protected $router;
 
     public function __construct($route_params)
     {
         $this->route_params = $route_params;
+        $this->serviceManager = new ServiceManager();
+
+        $this->router = new Router();
     }
 
     public function __call($name, $args)

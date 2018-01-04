@@ -2,6 +2,9 @@
 
 namespace App\Models\FitnessManager;
 
+/**
+ * @Entity @Table(name="user")
+ */
 class Profile
 {
     /** @var integer $id */

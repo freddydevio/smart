@@ -2,6 +2,7 @@
 
 namespace Core;
 
+use App\Services\Installer;
 use Dotenv\Dotenv;
 
 class Application
@@ -12,15 +13,26 @@ class Application
     public function __construct()
     {
         $this->router = new Router();
+        $serviceManager = new ServiceManager();
 
-        $this->initRoutes();
         $this->initEnvFiles();
-        $this->dispatchRoute();
+        /** @var Installer $installer */
+        $installer = $serviceManager->getService(Installer::class);
+        $installer->uninstall();
+
+        if(!$installer->isAlreadyInstalled()) {
+            $installer->installBaseTables();
+            $installer->installBaseRoutes();
+            $this->router->dispatch('install');
+        }else {
+            $this->initRoutes();
+            $this->dispatchRoute();
+        }
     }
 
     protected function initRoutes()
     {
-        $this->router->add('', ['controller' => 'SmartMirrorController', 'action' => 'index']);
+
         $this->router->add('news', ['controller' => 'NewsController', 'action' => 'index']);
         $this->router->add('reminders', ['controller' => 'ReminderController', 'action' => 'index']);
     }

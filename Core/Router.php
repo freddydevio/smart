@@ -5,15 +5,11 @@ namespace Core;
 class Router
 {
     /**
-     * Associative array of routes (the routing table)
-     * @var array
-     */
-    protected $routes = [];
-    /**
      * Parameters from the matched route
      * @var array
      */
     protected $params = [];
+
     /**
      * Add a route to the routing table
      *
@@ -32,8 +28,23 @@ class Router
         $route = preg_replace('/\{([a-z]+):([^\}]+)\}/', '(?P<\1>\2)', $route);
         // Add start and end delimiters, and case insensitive flag
         $route = '/^' . $route . '$/i';
-        $this->routes[$route] = $params;
+
+        $this->addRouteToStorage($route, $params);
     }
+
+    private function addRouteToStorage($route, $params)
+    {
+        $db = new Database();
+        $conn = $db->getDB();
+
+        $params = serialize($params);
+
+        $stmt = $conn->prepare('INSERT INTO routes (path, route) VALUES (:path, :route)');
+        $stmt->bindParam(':path', $route, \PDO::PARAM_STR);
+        $stmt->bindParam(':route', $params, \PDO::PARAM_STR);
+        $stmt->execute();
+    }
+
     /**
      * Get all the routes from the routing table
      *
@@ -41,7 +52,19 @@ class Router
      */
     public function getRoutes()
     {
-        return $this->routes;
+        $db = new Database();
+        $conn = $db->getDB();
+
+        $stmt = $conn->query('SELECT * FROM routes');
+        $routes = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        $result = [];
+
+        foreach ($routes as $route) {
+            $result[$route['path']] = unserialize($route['route']);
+        }
+
+        return $result;
     }
     /**
      * Match the route to the routes in the routing table, setting the $params
@@ -53,7 +76,9 @@ class Router
      */
     public function match($url)
     {
-        foreach ($this->routes as $route => $params) {
+        $routes = $this->getRoutes();
+
+        foreach ($routes as $route => $params) {
             if (preg_match($route, $url, $matches)) {
                 // Get named capture group values
                 foreach ($matches as $key => $match) {

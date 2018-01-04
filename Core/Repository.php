@@ -6,6 +6,21 @@ use PDO;
 
 abstract class Repository
 {
+    protected $table;
+
+    public function __construct()
+    {
+        $this->checkTableExist();
+    }
+
+    private function checkTableExist()
+    {
+        $db = static::getDB();
+        $exists = $db->query("SHOW TABLES LIKE '" . $this->table . "'")->fetch();
+        if(!$exists) {
+            $db->exec('CREATE TABLE '.$this->table.'(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT)');
+        }
+    }
 
     protected static function getDB()
     {

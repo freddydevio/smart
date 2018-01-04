@@ -2,9 +2,7 @@
 
 namespace App\Models\FitnessManager;
 
-use Core\Repository;
-
-class Profile extends Repository
+class Profile
 {
     /** @var integer $id */
     private $id;

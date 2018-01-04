@@ -17,9 +17,6 @@ class FitnessManager implements Service
     {
         $profileRepository = new ProfileRepository();
         $profiles = $profileRepository::getAll();
-
-        print_r($profiles);
-        die();
     }
 
 }

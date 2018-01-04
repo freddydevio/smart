@@ -3,7 +3,9 @@
     "require": {
         "twig/twig": "~1.0",
         "tcdent/php-restclient": "^0.1.7",
-        "vlucas/phpdotenv": "^2.4"
+        "vlucas/phpdotenv": "^2.4",
+        "doctrine/orm": "2.4.*",
+        "symfony/yaml": "2.*"
     },
     "autoload": {
         "psr-4": {

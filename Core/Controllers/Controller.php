@@ -8,6 +8,8 @@ abstract class Controller
 {
     /** @var DependencyInjector $container */
     protected $container;
+    /** @var array $viewVariables */
+    protected $viewVariables = [];
 
     function __construct()
     {
@@ -17,18 +19,18 @@ abstract class Controller
     public function __call($method, $args)
     {
         if (method_exists($this, $method)) {
-            if ($this->before() !== false) {
+            if ($this->preDispatch() !== false) {
                 call_user_func_array([$this, $method], $args);
-                $this->after();
+                $this->postDispatch();
             }
         } else {
             throw new \Exception("Method $method not found in controller " . get_class($this));
         }
     }
 
-    protected function before(){}
+    protected function preDispatch(){}
 
-    protected function after(){}
+    protected function postDispatch(){}
 
     protected function json($output)
     {

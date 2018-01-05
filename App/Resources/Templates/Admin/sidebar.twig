@@ -1,0 +1,9 @@
+<div class="menu--list">
+    {% for item in adminContext.modules %}
+        <div class="menu--item">
+            <span class="menu--item-header">{{ item.name }}</span>
+            <a class="menu--item-link" href="/modules/get/{{ item.id }}">Informationen</a>
+            <a class="menu--item-link" href="/modules/settings/{{ item.id }}">Einstellungen</a>
+        </div>
+    {% endfor %}
+</div>

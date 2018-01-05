@@ -31,6 +31,16 @@ class Modules
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    public function getModule($id)
+    {
+        $conn = $this->database->getDB();
+
+        $stmt = $conn->prepare('SELECT * FROM modules WHERE id = :id');
+        $stmt->bindParam(':id', $id);
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
     public function install($moduleFile)
     {
         $moduleData = $this->unzipArchive($moduleFile);

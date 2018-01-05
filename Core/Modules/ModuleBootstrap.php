@@ -17,4 +17,9 @@ interface ModuleBootstrap
      * @return array
      */
     public function getRoutes();
+
+    /**
+     * @return array
+     */
+    public function getConfig();
 }

@@ -6,6 +6,7 @@ use Core\Database\Connection;
 use Core\Modules\Modules;
 use Core\Routing\Dispatcher;
 use Core\Routing\Router;
+use Core\Services\AdminContext;
 
 class Bootstrap
 {
@@ -20,6 +21,7 @@ class Bootstrap
         $this->registerDatabase();
         $this->registerModules();
         $this->registerRouter();
+        $this->registerAdminContext();
     }
 
     protected function registerRouter()
@@ -45,5 +47,10 @@ class Bootstrap
     protected function registerModules()
     {
         $this->dependencyInjector->register('modules', new Modules());
+    }
+
+    protected function registerAdminContext()
+    {
+        $this->dependencyInjector->register('adminContext', new AdminContext());
     }
 }

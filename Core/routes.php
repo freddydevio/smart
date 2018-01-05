@@ -6,6 +6,7 @@ return [
     'modules/install' => ['controller' => 'ModuleController', 'action' => 'install'],
     'modules/list' => ['controller' => 'ModuleController', 'action' => 'list'],
     'modules/get' => ['controller' => 'ModuleController', 'action' => 'get'],
+    'modules/settings' => ['controller' => 'ModuleController', 'action' => 'settings'],
     'admin/index' => ['controller' => 'AdminController', 'action' => 'index'],
     'dashboard/index' => ['controller' => 'DashboardController', 'action' => 'index'],
 ];

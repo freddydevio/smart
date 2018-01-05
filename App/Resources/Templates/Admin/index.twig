@@ -1,0 +1,17 @@
+{% extends 'Admin/base.twig' %}
+
+{% block container %}
+    <div class="sidebar">
+        {% include 'Admin/sidebar.twig' %}
+    </div>
+    <div class="content">
+        <div class="top--bar">
+            {% include 'Admin/topbar.twig' %}
+        </div>
+        <div class="content--inner">
+            {% block contentInner %}
+                <h1>The admin information center.</h1>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

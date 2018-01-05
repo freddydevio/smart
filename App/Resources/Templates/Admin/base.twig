@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Smart | Admin</title>
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600" rel="stylesheet">
+        <link rel="stylesheet" href="/App/Resources/Assets/css/admin/app.css">
+    {% endblock %}
+    {% block javascripts %}{% endblock %}
+</head>
+<body>
+    {% block beforeContainer %}{% endblock %}
+    <div class="container">
+        {% block container %}{% endblock %}
+    </div>
+    {% block afterContainer %}{% endblock %}
+</body>
+</html>

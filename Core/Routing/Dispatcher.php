@@ -38,7 +38,17 @@ class Dispatcher
             $controllerObj = new $controller;
             if (is_callable([$controllerObj, $action])) {
                 $action = $this->convertToCamelCase($action);
+                $beforeAction =  'before'.ucfirst($action);
+                $afterAction =  'after'.ucfirst($action);
+                $controllerObj->preDispatch();
+                if (method_exists($controllerObj, $beforeAction)) {
+                    $controllerObj->$beforeAction();
+                }
                 $controllerObj->$action($this->parameter);
+                if (method_exists($controllerObj, $afterAction)) {
+                    $controllerObj->$afterAction();
+                }
+                $controllerObj->postDispatch();
             } else {
                 throw new \Exception("Method $action (in controller $controller) not found");
             }

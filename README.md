@@ -25,9 +25,12 @@ NewModule/Services/MyNewService.php
 *"Core\Services\Service.php"*
 
 ### Creating new Controllers
-
+Your Controller should call a service to handle something and get a callback with repsonse.
 ### Creating new Services
+Your Services should contain your data transfers like get data or send data and work with data.
 ### Creating new Models
-
+Your Model should be the transfer object for example for the database.
 ## Todo´s
 - Controller auto-registration
+- Full user documentation
+- Full developer documentation

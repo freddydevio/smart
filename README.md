@@ -1,7 +1,7 @@
 # Smart
-Smart is a open-source modular dashboard for your mirror.
+"smart" is a open-source modular dashboard for your mirror.
 
-##Creating a new Module
+## Creating a new Module
 Your Module could be a new Feature for any smart mirror. If you want to extend the system like described below.
 New features means new ideas for everyone.
 Your base Directory structure should looks like this:
@@ -29,5 +29,5 @@ NewModule/Services/MyNewService.php
 ### Creating new Services
 ### Creating new Models
 
-##Todo´s
+## Todo´s
 - Controller auto-registration

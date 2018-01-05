@@ -8,11 +8,9 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $adminContext = $this->container->getService('adminContext');
-        var_dump($adminContext->getModules(false));
-        die();
+        $adminContext = $this->container->getService('AdminContextService');
         $customVariables = [
-            'modules' => $adminContext->getModules(false)
+            'adminContext' => $adminContext
         ];
 
         $this->viewVariables = array_merge($this->viewVariables, $customVariables);

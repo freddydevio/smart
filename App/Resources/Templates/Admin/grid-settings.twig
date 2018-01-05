@@ -1,0 +1,10 @@
+{% extends 'Admin/index.twig' %}
+
+{% block contentInner %}
+    <h1>Grid Settings:</h1>
+    <div class="grid--container">
+        {% for items in gridItems %}
+            <div class="grid--item size--{{ items.size }}">ModuleId:{{ items.moduleId }}</div>
+        {% endfor %}
+    </div>
+{% endblock %}

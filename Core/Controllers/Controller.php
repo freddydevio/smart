@@ -37,4 +37,10 @@ abstract class Controller
         echo json_encode($output);
     }
 
+    protected function redirect($url)
+    {
+        header('Location: ' . $url);
+        exit();
+    }
+
 }

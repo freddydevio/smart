@@ -6,7 +6,7 @@ use Core\Database\Connection;
 use Core\Modules\Modules;
 use Core\Routing\Dispatcher;
 use Core\Routing\Router;
-use Core\Services\AdminContext;
+use Core\Services\ServiceRegisterer;
 
 class Bootstrap
 {
@@ -21,7 +21,7 @@ class Bootstrap
         $this->registerDatabase();
         $this->registerModules();
         $this->registerRouter();
-        $this->registerAdminContext();
+        $this->registerServices();
     }
 
     protected function registerRouter()
@@ -49,8 +49,16 @@ class Bootstrap
         $this->dependencyInjector->register('modules', new Modules());
     }
 
-    protected function registerAdminContext()
+    protected function registerServices()
     {
-        $this->dependencyInjector->register('adminContext', new AdminContext());
+        $services = [
+            'AdminContextService' => 'Core\Services\AdminContextService',
+            'FormBuilderService' => 'Core\Services\FormBuilderService',
+            'GridService' => 'Core\Services\GridService',
+        ];
+
+        foreach ($services as $serviceName => $serviceClass) {
+            $this->dependencyInjector->register($serviceName, new $serviceClass);
+        }
     }
 }

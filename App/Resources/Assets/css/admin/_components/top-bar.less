@@ -1,5 +1,26 @@
 .container {
 	.top--bar {
+		background: linear-gradient(270deg, #673ab7, #3f51b5, #2196f3, #009688, #4caf50);
+		background-size: 1000% 1000%;
 
+		-webkit-animation: ambilight 30s ease infinite;
+		-moz-animation: ambilight 30s ease infinite;
+		animation: ambilight 30s ease infinite;
 	}
+}
+
+@-webkit-keyframes ambilight {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+@-moz-keyframes ambilight {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
+}
+@keyframes ambilight {
+	0%{background-position:0% 50%}
+	50%{background-position:100% 50%}
+	100%{background-position:0% 50%}
 }

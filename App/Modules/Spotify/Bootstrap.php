@@ -25,9 +25,11 @@ class Bootstrap implements ModuleBootstrap
         return [
             'spotify_username' => [
                 'type' => 'text',
+                'placeholder' => 'Spotify Benutzername'
             ],
             'spotify_password' => [
                 'type' => 'password',
+                'placeholder' => 'Spotify Passwort'
             ]
         ];
     }

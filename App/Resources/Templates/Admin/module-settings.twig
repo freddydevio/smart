@@ -2,4 +2,11 @@
 
 {% block contentInner %}
     <h1>The settings.</h1>
+    <form method="POST" action="/modules/saveSettings">
+        {% for key, element in configForm %}
+            <input type="{{ element.type }}" name="{{ key }}" title="" placeholder="{{ element.placeholder }}" value="{{ element.value }}">
+        {% endfor %}
+        <input type="hidden" name="moduleId" value="{{ module.id }}">
+        <input type="submit" value="Speichern">
+    </form>
 {% endblock %}

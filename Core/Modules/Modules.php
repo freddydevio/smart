@@ -21,24 +21,56 @@ class Modules
     public function getListModules($onlyActive = true)
     {
         $conn = $this->database->getDB();
+        $sql = 'SELECT * FROM modules WHERE active = true';
 
         if (!$onlyActive) {
-            $stmt = $conn->query('SELECT * FROM modules');
-        } else {
-            $stmt = $conn->query('SELECT * FROM modules WHERE active = true');
+            $sql = 'SELECT * FROM modules';
         }
 
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $conn->query($sql)->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function getModule($id)
     {
         $conn = $this->database->getDB();
 
-        $stmt = $conn->prepare('SELECT * FROM modules WHERE id = :id');
-        $stmt->bindParam(':id', $id);
+        $stmt = $conn->query('SELECT * FROM modules WHERE id = ' . $id);
 
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    public function getModuleConfigById($id)
+    {
+        $moduleData = $this->getModule($id);
+        $moduleBootstrapNamespace = '\\' . $moduleData['name'] .'\\Bootstrap';
+
+        require_once $moduleData['path'];
+
+        $bootstrap = new $moduleBootstrapNamespace;
+
+        return $bootstrap->getConfig();
+    }
+
+    public function saveModuleConfigByData($data)
+    {
+        $conn = $this->database->getDB();
+
+        $moduleId = $data['moduleId'];
+        unset($data['moduleId']);
+
+        $stmt = $conn->prepare(
+            'INSERT INTO smart.module_config (name, value, moduleId) 
+              VALUES(:name, :value, :moduleId) 
+                ON DUPLICATE KEY 
+                UPDATE name=:name, value=:value, moduleId=:moduleId'
+        );
+
+        foreach ($data as $name => $value) {
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':value', $value);
+            $stmt->bindParam(':moduleId', $moduleId);
+            $stmt->execute();
+        }
     }
 
     public function install($moduleFile)
@@ -57,7 +89,7 @@ class Modules
         }
 
         $moduleBootstrapPath = (str_replace('.zip', '', $file) . '/Bootstrap.php');
-        require $moduleBootstrapPath;
+        require_once $moduleBootstrapPath;
 
         $pathParts = explode('/', str_replace('.zip', '', $file));
 
@@ -67,6 +99,7 @@ class Modules
         return [
             'name' => $bootstrap->getModuleName(),
             'routes' => $bootstrap->getRoutes(),
+            'config' => $bootstrap->getConfig(),
             'bootstrapPath' => $moduleBootstrapPath
         ];
 

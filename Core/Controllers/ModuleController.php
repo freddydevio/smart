@@ -13,7 +13,9 @@ class ModuleController extends Controller
 
     public function list()
     {
-        var_dump("list");
+        /** @var Modules $moduleService */
+        $moduleService = $this->container->getService('modules');
+        $this->json($moduleService->getListModules(false));
     }
 
     public function install()

@@ -33,6 +33,7 @@ class Dispatcher
         $namespace = $this->namespace . '\Controllers\\';
         $controller = $this->convertToStudlyCaps($this->controller);
         $controller = $namespace . $controller;
+
         if (class_exists($controller)) {
             $controllerObj = new $controller;
             if (is_callable([$controllerObj, $action])) {

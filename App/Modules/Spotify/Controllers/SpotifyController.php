@@ -1,10 +1,10 @@
 <?php
 
-namespace Spotify\Controllers;
+namespace App\Modules\Spotify\Controllers;
 
 use Core\Controllers\Controller;
 
-class Spotify extends Controller
+class SpotifyController extends Controller
 {
     public function index()
     {

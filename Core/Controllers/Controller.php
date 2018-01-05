@@ -30,4 +30,9 @@ abstract class Controller
 
     protected function after(){}
 
+    protected function json($output)
+    {
+        echo json_encode($output);
+    }
+
 }

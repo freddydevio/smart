@@ -54,7 +54,7 @@ class RouteCollector
             $routes = $bootstrap->getRoutes();
 
             foreach ($routes as &$route) {
-                $route['namespace'] = $module['name'];
+                $route['namespace'] = 'App\Modules\\'.$module['name'];
             }
 
             $this->routes = array_merge($this->routes, $routes);

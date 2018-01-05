@@ -41,7 +41,23 @@ class RouteCollector
 
     private function getRoutesFromModules()
     {
-        //add namespace to each route from given path
-        $this->routes = array_merge($this->routes, []);
+        $conn = $this->database->getDB();
+        $modules = $conn->query(
+            'SELECT * FROM modules'
+        )->fetchAll(\PDO::FETCH_ASSOC);
+
+        foreach ($modules as $module) {
+            require $module['path'];
+
+            $moduleBootstrap = '\\' . $module['name'] . '\\Bootstrap';
+            $bootstrap = new $moduleBootstrap;
+            $routes = $bootstrap->getRoutes();
+
+            foreach ($routes as &$route) {
+                $route['namespace'] = $module['name'];
+            }
+
+            $this->routes = array_merge($this->routes, $routes);
+        }
     }
 }

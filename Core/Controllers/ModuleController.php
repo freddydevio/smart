@@ -2,6 +2,8 @@
 
 namespace Core\Controllers;
 
+use Core\Modules\Modules;
+
 class ModuleController extends Controller
 {
     public function index()
@@ -12,6 +14,18 @@ class ModuleController extends Controller
     public function list()
     {
         var_dump("list");
+    }
+
+    public function install()
+    {
+        var_dump("install");
+        /** @var Modules $moduleService */
+        $moduleService = $this->container->getService('modules');
+        //upload
+        $file = APPLICATION_ROOT . '/App/Modules/Spotify.zip';
+        //unpack
+        $moduleService->install($file);
+        //register sth
     }
 
     public function get($id)

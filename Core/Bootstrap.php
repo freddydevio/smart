@@ -15,11 +15,11 @@ class Bootstrap
     function __construct(DependencyInjector $dependencyInjector)
     {
         $this->dependencyInjector = $dependencyInjector;
-        $this->registerRouter();
         $this->registerDispatcher();
         $this->registerConfig();
         $this->registerDatabase();
         $this->registerModules();
+        $this->registerRouter();
     }
 
     protected function registerRouter()

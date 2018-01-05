@@ -1,5 +1,5 @@
 # Smart
-"smart" is a open-source modular dashboard for your mirror.
+Smart is a open-source modular dashboard for your mirror.
 
 ##Creating a new Module
 Your Module could be a new Feature for any smart mirror. If you want to extend the system like described below.

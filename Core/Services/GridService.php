@@ -22,7 +22,19 @@ class GridService
         $conn = $db->getDb();
         $stmt = $conn->query('SELECT * FROM smart.grid');
 
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $gridItems = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $this->sortGridItems($gridItems);
+    }
+
+    private function sortGridItems($gridItems)
+    {
+        usort($gridItems, function ($item1, $item2) {
+            return $item1['position'] <=> $item2['position'];
+        });
+
+        return $gridItems;
+
     }
 
     public function saveGridPosition($id, $moduleId, $position)

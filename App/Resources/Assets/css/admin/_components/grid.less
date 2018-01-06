@@ -1,0 +1,21 @@
+.grid--container {
+	padding: 2rem;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	.grid--item {
+		background: red;
+		&.size--4 {
+			width: 100%;
+		}
+		&.size--2 {
+			width: (50% - .5rem);
+			&:nth-of-type(odd) {
+				margin-left: .5rem;
+			}
+			&:nth-of-type(even) {
+				margin-right: .5rem;
+			}
+		}
+	}
+}

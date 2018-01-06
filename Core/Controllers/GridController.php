@@ -13,7 +13,7 @@ class GridController extends Controller
 
     protected function preDispatch()
     {
-        parent::preDispatch();
+        parent::preDispatch();jh
         $this->gridService = $this->container->getService('GridService');
     }
 

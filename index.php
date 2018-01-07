@@ -9,9 +9,8 @@ set_exception_handler('Core\Error\ErrorHandler::exceptionHandler');
 define('APPLICATION_ROOT', __DIR__);
 define('CONFIG_ROOT', __DIR__ . '/App/Configs/');
 define('TEMPLATE_ROOT', __DIR__ . '/App/Resources/Templates/');
+define('MODULE_TEMPLATE_ROOT', __DIR__ . '/App/Modules/Weather/Resources/Templates/');
 define('ASSETS_ROOT', __DIR__ . '/App/Resources/Assets/');
 
 $application = new \Core\Application();
 $application->run();
-
-session_start();

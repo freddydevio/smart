@@ -43,4 +43,9 @@ abstract class Controller
         exit();
     }
 
+    protected function addViewVariables($key, $value)
+    {
+        $this->viewVariables[$key] = $value;
+    }
+
 }

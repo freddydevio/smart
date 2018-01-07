@@ -13,7 +13,7 @@ class GridController extends Controller
 
     protected function preDispatch()
     {
-        parent::preDispatch();jh
+        parent::preDispatch();
         $this->gridService = $this->container->getService('GridService');
     }
 
@@ -23,9 +23,14 @@ class GridController extends Controller
         $adminContext = $this->container->getService('AdminContextService');
         $gridItems = $this->gridService->getGridItems();
 
+        $widgetBasePaths = [
+            'weather' => 'Weather/widget.twig'
+        ];
+
         $viewVariables = [
             'adminContext' => $adminContext,
-            'gridItems' => $gridItems
+            'gridItems' => $gridItems,
+            'widgetBasePaths' => $widgetBasePaths
         ];
 
         $this->viewVariables = array_merge($this->viewVariables, $viewVariables);

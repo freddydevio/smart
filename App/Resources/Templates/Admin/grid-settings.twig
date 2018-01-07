@@ -3,8 +3,12 @@
 {% block contentInner %}
     <h1>Grid Settings:</h1>
     <div class="grid--container">
-        {% for items in gridItems %}
-            <div class="grid--item size--{{ items.size }}">ModuleId:{{ items.moduleId }}</div>
+        {% for item in gridItems %}
+            {% block moduleItemsBlock %}
+                {% for widgetBasePath in widgetBasePaths %}
+                    {% include widgetBasePath %}
+                {% endfor %}
+            {% endblock %}
         {% endfor %}
     </div>
 {% endblock %}

@@ -22,6 +22,11 @@ class Bootstrap implements ModuleBootstrap
 
     public function getConfig()
     {
-        return [];
+        return [
+            'weather_city' => [
+                'placeholder' => 'Stadt',
+                'type' => 'text'
+            ]
+        ];
     }
 }

@@ -34,7 +34,8 @@ class View
     {
         static $twig = null;
         if ($twig === null) {
-            $loader = new \Twig_Loader_Filesystem(TEMPLATE_ROOT);
+            $loader = new \Twig_Loader_Filesystem([TEMPLATE_ROOT]);
+            $loader->addPath(MODULE_TEMPLATE_ROOT);
             $twig = new \Twig_Environment($loader);
         }
         echo $twig->render($template, $args);

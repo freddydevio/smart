@@ -1,1 +1,35 @@
 {% extends 'Dashboard/base.twig' %}
+
+{% block container %}
+    <div class="grid--container">
+        {% for item in gridItems %}
+            <div class="grid--item size--{{ item.size }}">
+
+                <div class="current-weather">
+                    <span>{{ item.data.current.temp }}°{{ item.data.units.temperature }} {{ item.data.text }}</span>
+                </div>
+
+                <div class="location">
+                    <span>{{ item.data.location.city }}, {{ item.data.location.region }}</span>
+                </div>
+
+                <div class="wind">
+                    <span>{{ item.data.wind.speed }} {{ item.data.units.speed }} direction: {{ item.data.wind.direction }}</span>
+                </div>
+
+                <div class="forecasts">
+                    {% for forecastItem in item.data.forecasts %}
+                        <div class="item">
+                            <span>{{ forecastItem.code }}</span>
+                            <span>{{ forecastItem.date }}</span>
+                            <span>{{ forecastItem.day }}</span>
+                            <span>{{ forecastItem.high }}</span>
+                            <span>{{ forecastItem.low }}</span>
+                            <span>{{ forecastItem.text }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

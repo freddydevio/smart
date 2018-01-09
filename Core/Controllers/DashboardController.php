@@ -30,7 +30,6 @@ class DashboardController extends Controller
 
         foreach ($gridItems as &$gridItem) {
             $gridItem['data'] = $this->getWidgetDataByModuleId($gridItem['moduleId']);
-            $gridItem['dataUrl'] = 'test';
         }
 
         $moduleWidgetPaths = [

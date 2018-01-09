@@ -1,15 +1,40 @@
+var intervalList = [];
+var intervalCount = 0;
+
 $(document).ready(function () {
     console.log(intents);
-    if (annyang) {
 
-        var commands = {
-            'hello': function() { alert('Hello world!'); }
-        };
+    var $dynmaicWidgets = $("[data-url]");
 
-        // Add our commands to annyang
-        annyang.addCommands(commands);
+    $.each($dynmaicWidgets, function (key, value) {
+        intervalList.push({
+                item : value,
+                interval : $(value).data('interval')
+        });
+    });
 
-        // Start listening.
-        annyang.start();
-    }
+    //init the interval timer
+    setInterval(function () {
+        runInterval()
+    }, 1000);
+
+    // if (annyang) {
+    //     var commands = {
+    //         'hello': function() { alert('Hello world!'); }
+    //     };
+    //     // Add our commands to annyang
+    //     annyang.addCommands(commands);
+    //     // Start listening.
+    //     annyang.start();
+    // }
 });
+
+function runInterval() {
+    $.each(intervalList, function (key, item) {
+        if(intervalCount % item.interval == 0) {
+            console.log('current interval:'+intervalCount + 'now');
+
+        }
+    });
+    intervalCount++;
+}

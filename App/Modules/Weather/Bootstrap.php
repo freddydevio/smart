@@ -25,7 +25,8 @@ class Bootstrap implements ModuleBootstrap
         return [
             'weather_city' => [
                 'placeholder' => 'Stadt',
-                'type' => 'text'
+                'type' => 'text',
+                'helpText' => 'Stadt:'
             ]
         ];
     }

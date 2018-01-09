@@ -3,14 +3,18 @@
 {% block contentInner %}
     <div class="widget--container">
         <div class="widget">
-            <form method="post" action="/admin/saveSetting">
-                <label for="pageReload">Seiten Reload aktiv?</label>
-                <input id="pageReload" type="checkbox" name="pageReload">
-                <label for="pageReloadInterval">Seiten Reload aktiv?</label>
-                <input type="number" name="pageReloadInterval" id="pageReloadInterval">
+            <span class="widget--title">Auto-Reload Funktion</span>
+            <form method="post" action="/admin/saveSettings">
+                <div class="row-content">
+                    <label for="pageReload">Seiten Reload aktiv?</label>
+                    <input id="pageReload" type="checkbox" name="pageReload">
+                </div>
+                <div class="row-content">
+                    <label for="pageReloadInterval">Interval (Sekunden)</label>
+                    <input type="number" name="pageReloadInterval" step="10" min="60" max="300" id="pageReloadInterval">
+                </div>
+                <input type="submit" value="Speichern">
             </form>
         </div>
-        <div class="widget"></div>
-        <div class="widget"></div>
     </div>
 {% endblock %}

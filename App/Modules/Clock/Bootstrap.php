@@ -15,7 +15,12 @@ class Bootstrap implements ModuleBootstrap
 
     public function getRoutes()
     {
-        return [];
+        return [
+            'clock/getData' => [
+                'controller' => 'ClockController',
+                'action' => 'getData'
+            ]
+        ];
     }
 
     public function getConfig()
@@ -23,7 +28,8 @@ class Bootstrap implements ModuleBootstrap
         return [
             'clock_timezone' => [
                 'placeholder' => 'Zeitzone',
-                'type' => 'text'
+                'type' => 'text',
+                'helpText' => 'Zeitzone:'
             ]
         ];
     }

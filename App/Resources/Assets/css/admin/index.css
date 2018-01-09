@@ -27,13 +27,3 @@
   background: #F3F3F3;
   height: 100%;
 }
-.container .content .content--inner .widget--container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-}
-.container .content .content--inner .widget--container .widget {
-  padding: 1rem;
-  background: white;
-}

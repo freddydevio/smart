@@ -1,12 +1,19 @@
 {% extends 'Admin/index.twig' %}
 
 {% block contentInner %}
-    <h1>The settings.</h1>
-    <form method="POST" action="/modules/saveSettings">
-        {% for key, element in configForm %}
-            <input type="{{ element.type }}" name="{{ key }}" title="" placeholder="{{ element.placeholder }}" value="{{ element.value }}">
-        {% endfor %}
-        <input type="hidden" name="moduleId" value="{{ module.id }}">
-        <input type="submit" value="Speichern">
-    </form>
+    <div class="widget--container">
+        <div class="widget">
+            <span class="widget--title">Module Einstellungen</span>
+            <form method="POST" action="/modules/saveSettings">
+                {% for key, element in configForm %}
+                    <div class="row-content">
+                        <label>{{ element.helpText }}</label>
+                        <input type="{{ element.type }}" name="{{ key }}" title="" placeholder="{{ element.placeholder }}" value="{{ element.value }}">
+                    </div>
+                {% endfor %}
+                    <input type="hidden" name="moduleId" value="{{ module.id }}">
+                <input type="submit" value="Speichern">
+            </form>
+        </div>
+    </div>
 {% endblock %}

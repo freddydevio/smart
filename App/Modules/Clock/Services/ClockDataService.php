@@ -23,6 +23,7 @@ class ClockDataService extends Service
     {
         $data['time'] = $this->getCurrentTime();
         $data['date'] = $this->getCurrentDate();
+        $data['dataUrl'] = '/clock/getData';
 
         return $data;
     }

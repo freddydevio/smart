@@ -7,7 +7,7 @@ use Core\Services\Service;
 
 class WeatherDataService extends Service
 {
-    public function getWeatherData()
+    public function getWeatherData($forecastsMax = 3)
     {
         /** @var ConfigService $configService */
         $configService = $this->serviceContainer->getService('ConfigService');
@@ -23,12 +23,22 @@ class WeatherDataService extends Service
 
         $data = $this->objectToArray($result->query->results->channel);
 
+        $forecasts = [];
+        $forecastsCount = 0;
+        foreach ($data['item']['forecast'] as $forecast) {
+            if ($forecastsCount == $forecastsMax) {
+                break;
+            }
+            $forecasts[] = $forecast;
+            $forecastsCount++;
+        }
+
         $result = [
             'units' => $data['units'],
             'location' => $data['location'],
             'wind' => $data['wind'],
             'current' => $data['item']['condition'],
-            'forecasts' => $data['item']['forecast']
+            'forecasts' => $forecasts
         ];
 
         return $result;

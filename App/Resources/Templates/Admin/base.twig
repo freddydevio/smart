@@ -8,11 +8,17 @@
     <title>Smart | Admin</title>
     {% block stylesheets %}
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600" rel="stylesheet">
-        <link rel="stylesheet" href="/App/Resources/Assets/css/admin/app.css">
+        <link rel="stylesheet" href="/App/Public/Assets/app.css">
     {% endblock %}
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+        <script
+                src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                crossorigin="anonymous"></script>
+        <script src="/App/Resources/Assets/js/backend/app.js"></script>
+    {% endblock %}
 </head>
-<body>
+<body class="admin">
     {% block beforeContainer %}{% endblock %}
     <div class="container">
         {% block container %}{% endblock %}

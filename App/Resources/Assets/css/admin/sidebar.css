@@ -1,0 +1,18 @@
+.menu--list {
+  display: flex;
+  flex-direction: column;
+}
+.menu--list .menu--item {
+  display: flex;
+  flex-direction: column;
+  padding: .5rem 0 .5rem 1rem;
+}
+.menu--list .menu--item .menu--item-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: .2rem;
+}
+.menu--list .menu--item .menu--item-link {
+  text-decoration: none;
+  color: black;
+}

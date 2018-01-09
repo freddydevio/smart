@@ -55,8 +55,11 @@ class Bootstrap
             'AdminContextService' => 'Core\Services\AdminContextService',
             'FormBuilderService' => 'Core\Services\FormBuilderService',
             'GridService' => 'Core\Services\GridService',
+            'ConfigService' => 'Core\Services\ConfigService',
+            'LessCompilerService' => 'Core\Services\LessCompilerService',
+            'IntentsCollectorService' => 'Core\Services\IntentsCollectorService',
             'WeatherDataService' => 'App\Modules\Weather\Services\WeatherDataService',
-            'ConfigService' => 'Core\Services\ConfigService'
+            'ClockDataService' => 'App\Modules\Clock\Services\ClockDataService',
         ];
 
         foreach ($services as $serviceName => $serviceClass) {

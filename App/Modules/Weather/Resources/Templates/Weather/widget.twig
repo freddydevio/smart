@@ -1,7 +1,48 @@
 
-{% if item.moduleId == 1 %}
-    <div class="grid--item size--{{ item.size }}">
+<div class="grid--item weather--widget size--{{ item.size }} module--id-{{ item.moduleId }}">
 
+    <span class="current-weather">{{ item.data.current.temp }}°{{ item.data.units.temperature }} {{ item.data.text }}</span>
 
+    <div class="location">
+        <i class="zmdi zmdi-pin-drop"></i>
+        <span>{{ item.data.location.city }}, {{ item.data.location.region }}</span>
     </div>
-{% endif %}
+
+    <div class="wind">
+        <span>{{ item.data.wind.speed }} {{ item.data.units.speed }} direction: {{ item.data.wind.direction }}°</span>
+    </div>
+
+    <div class="forecasts">
+        {% for forecastItem in item.data.forecasts %}
+            <div class="item">
+                <div class="row-content">
+                    <div class="weather-icon flex center-center">
+                        {% if forecastItem.code > 35 %}
+                            <i class="wi wi-day-haze"></i>
+                        {% elseif forecastItem.code > 30 %}
+                            <i class="wi wi-day-sunny"></i>
+                        {% elseif forecastItem.code > 25 %}
+                            <i class="wi wi-day-cloudy"></i>
+                        {% elseif forecastItem.code > 20 %}
+                            <i class="wi wi-day-fog"></i>
+                        {% elseif forecastItem.code > 15 %}
+                            <i class="wi wi-day-rain"></i>
+                        {% elseif forecastItem.code > 10 %}
+                            <i class="wi wi-day-rain-mix"></i>
+                        {% elseif forecastItem.code > 5 %}
+                            <i class="wi wi-day-snow-thunderstorm"></i>
+                        {% endif %}
+                    </div>
+                    <div class="additional-forecast-info">
+                        <span>{{ forecastItem.day }}, {{ forecastItem.date }}</span>
+                        <div class="high-low-temperature row-content">
+                            <span><i class="zmdi zmdi-triangle-up"></i> {{ forecastItem.high }}</span>
+                            <span><i class="zmdi zmdi-triangle-down"></i> {{ forecastItem.low }}</span>
+                        </div>
+                        <span>{{ forecastItem.text }}</span>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -11,6 +11,8 @@ return [
     'grid/index' => ['controller' => 'GridController', 'action' => 'index'],
     'grid/create' => ['controller' => 'GridController', 'action' => 'create'],
     'grid/save' => ['controller' => 'GridController', 'action' => 'save'],
+    'lesscompiler/index' => ['controller' => 'LessCompilerController', 'action' => 'index'],
     'admin/index' => ['controller' => 'AdminController', 'action' => 'index'],
+    'admin/settings' => ['controller' => 'AdminController', 'action' => 'settings'],
     'dashboard/index' => ['controller' => 'DashboardController', 'action' => 'index'],
 ];

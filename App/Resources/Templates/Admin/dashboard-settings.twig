@@ -1,0 +1,16 @@
+{% extends 'Admin/index.twig' %}
+
+{% block contentInner %}
+    <div class="widget--container">
+        <div class="widget">
+            <form method="post" action="/admin/saveSetting">
+                <label for="pageReload">Seiten Reload aktiv?</label>
+                <input id="pageReload" type="checkbox" name="pageReload">
+                <label for="pageReloadInterval">Seiten Reload aktiv?</label>
+                <input type="number" name="pageReloadInterval" id="pageReloadInterval">
+            </form>
+        </div>
+        <div class="widget"></div>
+        <div class="widget"></div>
+    </div>
+{% endblock %}

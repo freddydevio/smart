@@ -8,11 +8,21 @@
     <title>Smart | Dashboard</title>
     {% block stylesheets %}
         <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600" rel="stylesheet">
-        <link rel="stylesheet" href="/App/Resources/Assets/css/admin/app.css">
+        <link rel="stylesheet" href="/App/Public/Assets/app.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css">
     {% endblock %}
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+        <script
+                src="https://code.jquery.com/jquery-3.2.1.min.js"
+                integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+                crossorigin="anonymous"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+        <script src="/App/Resources/Assets/js/app.js"></script>
+        <script src="/App/Resources/Assets/js/page-reloader.js"></script>
+    {% endblock %}
 </head>
-<body>
+<body class="dashboard">
     {% block beforeContainer %}{% endblock %}
     <div class="container">
         {% block container %}{% endblock %}

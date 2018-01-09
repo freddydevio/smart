@@ -1,0 +1,39 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100vh;
+}
+.container .sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  height: 100%;
+}
+.container .content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+.container .content .top--bar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 1.5rem;
+  box-shadow: 0 5px 20px -5px rgba(0, 0, 0, 0.1);
+}
+.container .content .content--inner {
+  background: #F3F3F3;
+  height: 100%;
+}
+.container .content .content--inner .widget--container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.container .content .content--inner .widget--container .widget {
+  padding: 1rem;
+  background: white;
+}

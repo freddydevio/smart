@@ -35,7 +35,8 @@ class View
         static $twig = null;
         if ($twig === null) {
             $loader = new \Twig_Loader_Filesystem([TEMPLATE_ROOT]);
-            $loader->addPath(MODULE_TEMPLATE_ROOT);
+            $loader->addPath(__DIR__ . '/../../App/Modules/Weather/Resources/Templates/');
+            $loader->addPath(__DIR__ . '/../../App/Modules/Clock/Resources/Templates/');
             $twig = new \Twig_Environment($loader);
         }
         echo $twig->render($template, $args);

@@ -1,4 +1,9 @@
 <div class="menu--list">
+    <div class="menu--item">
+        <span class="menu--item-header">Dashboard</span>
+        <a class="menu--item-link" href="/grid">Grid Einstellungen</a>
+        <a class="menu--item-link" href="/admin/settings">Allgemeine Einstellungen</a>
+    </div>
     {% for item in adminContext.modules %}
         <div class="menu--item">
             <span class="menu--item-header">{{ item.name }}</span>

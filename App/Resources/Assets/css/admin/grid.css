@@ -1,0 +1,21 @@
+.admin .grid--container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.admin .grid--container .grid--item {
+  background: red;
+}
+.admin .grid--container .grid--item.size--4 {
+  width: 100%;
+}
+.admin .grid--container .grid--item.size--2 {
+  width: 49.5%;
+}
+.admin .grid--container .grid--item.size--2:nth-of-type(odd) {
+  margin-left: .5rem;
+}
+.admin .grid--container .grid--item.size--2:nth-of-type(even) {
+  margin-right: .5rem;
+}

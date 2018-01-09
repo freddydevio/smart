@@ -1,10 +1,3 @@
-body {
-	margin: 0;
-}
-
-* {
-	font-family: 'Raleway', sans-serif;
-}
 
 .container {
 	display: flex;
@@ -34,6 +27,16 @@ body {
 		.content--inner {
 			background: #F3F3F3;
 			height: 100%;
+			.widget--container {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				width: 100%;
+				.widget {
+					padding: 1rem;
+					background: white;
+				}
+			}
 		}
 	}
 }

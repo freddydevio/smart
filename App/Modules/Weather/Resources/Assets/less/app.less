@@ -1,0 +1,39 @@
+.dashboard {
+	.weather--widget {
+		.current-weather {
+			font-size: 4.5rem;
+			font-weight: bold;
+		}
+		.location {
+			.zmdi {
+				font-size: 1.5rem;
+			}
+			span {
+				font-size: 1.2rem;
+			}
+		}
+		.wind {
+
+		}
+		.forecasts {
+			display: flex;
+			flex-direction: row;
+			margin-top: .5rem;
+			.item {
+				display: flex;
+				flex-direction: column;
+				.weather-icon {
+					padding: 0 .5rem;
+				}
+				.high-low-temperature {
+					span {
+						margin-right: .5rem;
+					}
+				}
+				.wi {
+					font-size: 2rem;
+				}
+			}
+		}
+	}
+}

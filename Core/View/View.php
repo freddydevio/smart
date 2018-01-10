@@ -2,6 +2,9 @@
 
 namespace Core\View;
 
+use Core\DependencyInjector;
+use Core\Modules\Modules;
+
 class View
 {
     /**
@@ -35,8 +38,17 @@ class View
         static $twig = null;
         if ($twig === null) {
             $loader = new \Twig_Loader_Filesystem([TEMPLATE_ROOT]);
-            $loader->addPath(__DIR__ . '/../../App/Modules/Weather/Resources/Templates/');
-            $loader->addPath(__DIR__ . '/../../App/Modules/Clock/Resources/Templates/');
+
+            /** @var DependencyInjector $serviceContainer */
+            $serviceContainer = DependencyInjector::getInstance();
+            /** @var Modules $moduleService */
+            $moduleService = $serviceContainer->getService('modules');
+            $moduleDirs = $moduleService->getModuleTemplateDirs();
+
+            foreach ($moduleDirs as $moduleDir) {
+                $loader->addPath($moduleDir);
+            }
+
             $twig = new \Twig_Environment($loader);
         }
         echo $twig->render($template, $args);

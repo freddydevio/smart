@@ -8,12 +8,14 @@ class LessCompilerService extends Service
     const CSS_OUTPUT_ADMIN_FILE = APPLICATION_ROOT . '/App/Public/Assets/admin/app.css';
     const CSS_OUTPUT_DASHBOARD_FILE = APPLICATION_ROOT . '/App/Public/Assets/dashboard/app.css';
     const CSS_OUTPUT_MODULES_FILE = APPLICATION_ROOT . '/App/Public/Assets/modules/app.css';
+    const CSS_OUTPUT_ERRORS_FILE = APPLICATION_ROOT . '/App/Public/Assets/errors/app.css';
 
     public function compileLessFiles()
     {
         $this->compileDashboardLessFiles();
         $this->compileAdminLessFiles();
         $this->compileModuleLessFiles();
+        $this->compileErrorLessFiles();
     }
 
     private function compileDashboardLessFiles()
@@ -26,6 +28,7 @@ class LessCompilerService extends Service
                 APPLICATION_ROOT . '/App/Resources/Assets/css/dashboard/app.less',
                 APPLICATION_ROOT . '/App/Modules/Weather/Resources/Assets/less/app.less',
                 APPLICATION_ROOT . '/App/Modules/Clock/Resources/Assets/less/app.less',
+                APPLICATION_ROOT . '/App/Modules/News/Resources/Assets/less/app.less',
             ];
 
             foreach ($files as $file) {
@@ -68,6 +71,31 @@ class LessCompilerService extends Service
         }
     }
 
+    private function compileErrorLessFiles()
+    {
+        try {
+            $options = array('compress' => true);
+            $parser = new \Less_Parser($options);
+
+            $files = [
+                APPLICATION_ROOT . '/App/Resources/Assets/css/errors/app.less',
+            ];
+
+            foreach ($files as $file) {
+                $parser->parseFile($file);
+            }
+
+            $css = $parser->getCss();
+
+            $this->saveCssFile($css, self::CSS_OUTPUT_ERRORS_FILE);
+
+        } catch (\Exception $e) {
+            $error_message = $e->getMessage();
+            var_dump($error_message);
+            die();
+        }
+    }
+
     private function compileModuleLessFiles()
     {
         try {
@@ -77,6 +105,7 @@ class LessCompilerService extends Service
             $files = [
                 APPLICATION_ROOT . '/App/Modules/Weather/Resources/Assets/less/app.less',
                 APPLICATION_ROOT . '/App/Modules/Clock/Resources/Assets/less/app.less',
+                APPLICATION_ROOT . '/App/Modules/News/Resources/Assets/less/app.less',
             ];
 
             foreach ($files as $file) {

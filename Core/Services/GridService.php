@@ -3,6 +3,7 @@
 namespace Core\Services;
 
 use App\Modules\Clock\Services\ClockDataService;
+use App\Modules\News\Services\NewsDataService;
 use App\Modules\Weather\Services\WeatherDataService;
 use Core\Database\Connection;
 use Core\DependencyInjector;
@@ -47,6 +48,10 @@ class GridService
             /** @var ClockDataService $clockService */
             $clockService = $this->serviceContainer->getService('ClockDataService');
             $data = $clockService->getData();
+        }elseif($moduleId == 3) {
+            /** @var NewsDataService $newsDataService */
+            $newsDataService = $this->serviceContainer->getService('NewsDataService');
+            $data = $newsDataService->getData();
         }
 
         return $data;

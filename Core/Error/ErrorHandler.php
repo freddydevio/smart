@@ -2,6 +2,7 @@
 
 namespace Core\Error;
 
+use Core\View\View;
 use Exception;
 
 class ErrorHandler
@@ -40,13 +41,13 @@ class ErrorHandler
 
         http_response_code($code);
 
-        //if (getenv('SHOW_ERRORS')) {
+        /*if (boolval(getenv('SHOW_ERRORS'))) {
             echo "<h1>Fatal error</h1>";
             echo "<p>Uncaught exception: '" . get_class($exception) . "'</p>";
             echo "<p>Message: '" . $exception->getMessage() . "'</p>";
             echo "<p>Stack trace:<pre>" . $exception->getTraceAsString() . "</pre></p>";
             echo "<p>Thrown in '" . $exception->getFile() . "' on line " . $exception->getLine() . "</p>";
-        /*} else {
+        } else {*/
             $log = dirname(__DIR__) . '/logs/' . date('Y-m-d') . '.txt';
             ini_set('error_log', $log);
             $message = "Uncaught exception: '" . get_class($exception) . "'";
@@ -54,7 +55,7 @@ class ErrorHandler
             $message .= "\nStack trace: " . $exception->getTraceAsString();
             $message .= "\nThrown in '" . $exception->getFile() . "' on line " . $exception->getLine();
             error_log($message);
-            //View::renderTemplate("$code.html");
-        }*/
+            View::renderTemplate("Errors/$code.twig");
+        //}
     }
 }

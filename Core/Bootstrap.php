@@ -60,6 +60,7 @@ class Bootstrap
             'IntentsCollectorService' => 'Core\Services\IntentsCollectorService',
             'WeatherDataService' => 'App\Modules\Weather\Services\WeatherDataService',
             'ClockDataService' => 'App\Modules\Clock\Services\ClockDataService',
+            'NewsDataService' => 'App\Modules\News\Services\NewsDataService',
         ];
 
         foreach ($services as $serviceName => $serviceClass) {

@@ -67,7 +67,8 @@ class ContextService extends Service
         $context->setAutoReloadInterval($configService->getGeneralConfig('page_reload_interval', 30));
         $context->setModuleWidgetPaths([
             '1' => 'Weather/widget.twig',
-            '2' => 'Clock/widget.twig'
+            '2' => 'Clock/widget.twig',
+            '3' => 'News/widget.twig'
         ]);
 
         $this->dashboardContext = $context;

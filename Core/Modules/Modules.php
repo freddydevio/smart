@@ -21,13 +21,25 @@ class Modules
     public function getListModules($onlyActive = true)
     {
         $conn = $this->database->getDB();
-        $sql = 'SELECT * FROM modules WHERE active = true';
+        $sql = 'SELECT * FROM modules WHERE active = TRUE';
 
         if (!$onlyActive) {
             $sql = 'SELECT * FROM modules';
         }
 
         return $conn->query($sql)->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    public function getModuleTemplateDirs()
+    {
+        $templateDirs = [];
+        $modules = $this->getListModules(false);
+
+        foreach ($modules as $module) {
+            $templateDirs[] = APPLICATION_ROOT . '/App/Modules/' . $module['name'] . '/Resources/Templates/';
+        }
+
+        return $templateDirs;
     }
 
     public function getModule($id)

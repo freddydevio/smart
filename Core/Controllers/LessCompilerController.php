@@ -12,5 +12,7 @@ class LessCompilerController extends Controller
         /** @var LessCompilerService $lessCompilerService */
         $lessCompilerService = $this->container->getService('LessCompilerService');
         $lessCompilerService->compileLessFiles();
+
+        $this->redirect('/admin/settings');
     }
 }

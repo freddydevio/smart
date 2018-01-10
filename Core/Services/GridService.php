@@ -2,6 +2,8 @@
 
 namespace Core\Services;
 
+use App\Modules\Clock\Services\ClockDataService;
+use App\Modules\Weather\Services\WeatherDataService;
 use Core\Database\Connection;
 use Core\DependencyInjector;
 
@@ -24,7 +26,30 @@ class GridService
 
         $gridItems = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-        return $this->sortGridItems($gridItems);
+        $gridItems = $this->sortGridItems($gridItems);
+
+        foreach ($gridItems as &$gridItem) {
+            $gridItem['data'] = $this->getWidgetDataByModuleId($gridItem['moduleId']);
+        }
+
+        return $gridItems;
+    }
+
+    private function getWidgetDataByModuleId($moduleId)
+    {
+        $data = null;
+
+        if($moduleId == 1) {
+            /** @var WeatherDataService $weatherService */
+            $weatherService = $this->serviceContainer->getService('WeatherDataService');
+            $data = $weatherService->getWeatherData();
+        }elseif($moduleId == 2) {
+            /** @var ClockDataService $clockService */
+            $clockService = $this->serviceContainer->getService('ClockDataService');
+            $data = $clockService->getData();
+        }
+
+        return $data;
     }
 
     private function sortGridItems($gridItems)

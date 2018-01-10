@@ -8,8 +8,9 @@ $(document).ready(function () {
 
     $.each($dynmaicWidgets, function (key, value) {
         intervalList.push({
-                item : value,
-                interval : $(value).data('interval')
+            item : value,
+            interval : $(value).data('interval'),
+            dataUrl: $(value).data('url')
         });
     });
 
@@ -32,9 +33,25 @@ $(document).ready(function () {
 function runInterval() {
     $.each(intervalList, function (key, item) {
         if(intervalCount % item.interval == 0) {
-            console.log('current interval:'+intervalCount + 'now');
+            $.ajax({
+                type:'GET',
+                url: item.dataUrl,
+                success: function (response) {
+                    updateWidget(JSON.parse(response));
+                },
+                error: function () {
+                    console.error('error interval ajax request');
+                }
+            })
 
         }
     });
     intervalCount++;
+}
+
+function updateWidget(data) {
+    $.each(data, function (key, value) {
+        var $gridItemKeyValue = $('[data-' + key + ']');
+        $gridItemKeyValue.html(value);
+    });
 }

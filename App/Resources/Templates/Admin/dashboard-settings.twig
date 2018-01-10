@@ -7,14 +7,34 @@
             <form method="post" action="/admin/saveSettings">
                 <div class="row-content">
                     <label for="pageReload">Seiten Reload aktiv?</label>
-                    <input id="pageReload" type="checkbox" name="pageReload">
+                    <input id="pageReload" type="checkbox" {% if adminContext.autoReload %}checked{% endif %}>
+                    <input type="hidden" name="page_reload" value="{% if adminContext.autoReload %}1{% else %}0{% endif %}">
                 </div>
                 <div class="row-content">
                     <label for="pageReloadInterval">Interval (Sekunden)</label>
-                    <input type="number" name="pageReloadInterval" step="10" min="60" max="300" id="pageReloadInterval">
+                    <input type="number" name="page_reload_interval" value="{{ adminContext.autoReloadInterval }}" step="10" min="60" max="300" id="pageReloadInterval">
                 </div>
+                <input type="hidden" name="form" value="autoReloadForm">
                 <input type="submit" value="Speichern">
             </form>
+        </div>
+        <div class="widget">
+            <span class="widget--title">Fehlermeldungen</span>
+            <form method="post" action="/admin/saveSettings">
+                <div class="row-content">
+                    <label for="errorMessages">Fehlermeldungen im Frontend anzeigen?</label>
+                    <input id="errorMessages" type="checkbox"  {% if adminContext.errorMessages %}checked{% endif %}>
+                    <input type="hidden" name="show_error_messages" value="{% if adminContext.errorMessages %}1{% else %}0{% endif %}">
+                </div>
+                <input type="hidden" name="form" value="showErrorMessagesForm">
+                <input type="submit" value="Speichern">
+            </form>
+        </div>
+        <div class="widget">
+            <span class="widget--title">Less Dateien kompilieren</span>
+            <div class="row-content">
+                <a class="button" href="/lesscompiler">Jetzt kompilieren</a>
+            </div>
         </div>
     </div>
 {% endblock %}

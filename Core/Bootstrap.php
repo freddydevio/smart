@@ -52,11 +52,11 @@ class Bootstrap
     protected function registerServices()
     {
         $services = [
-            'AdminContextService' => 'Core\Services\AdminContextService',
             'FormBuilderService' => 'Core\Services\FormBuilderService',
             'GridService' => 'Core\Services\GridService',
             'ConfigService' => 'Core\Services\ConfigService',
             'LessCompilerService' => 'Core\Services\LessCompilerService',
+            'ContextService' => 'Core\Services\ContextService',
             'IntentsCollectorService' => 'Core\Services\IntentsCollectorService',
             'WeatherDataService' => 'App\Modules\Weather\Services\WeatherDataService',
             'ClockDataService' => 'App\Modules\Clock\Services\ClockDataService',

@@ -2,7 +2,7 @@
 
 namespace Core\Controllers;
 
-use Core\Services\AdminContextService;
+use Core\Services\ContextService;
 use Core\Services\GridService;
 use Core\View\View;
 
@@ -19,21 +19,20 @@ class GridController extends Controller
 
     public function index()
     {
-        /** @var AdminContextService $adminContext */
-        $adminContext = $this->container->getService('AdminContextService');
+        /** @var ContextService $adminContext */
+        $contextService = $this->container->getService('ContextService');
+        $adminContext = $contextService->getAdminContext();
+
         $gridItems = $this->gridService->getGridItems();
 
         $widgetBasePaths = [
             'weather' => 'Weather/widget.twig'
         ];
 
-        $viewVariables = [
-            'adminContext' => $adminContext,
-            'gridItems' => $gridItems,
-            'widgetBasePaths' => $widgetBasePaths
-        ];
+        $this->addViewVariables('adminContext', $adminContext);
+        $this->addViewVariables('gridItems', $gridItems);
+        $this->addViewVariables('widgetBasePaths', $widgetBasePaths);
 
-        $this->viewVariables = array_merge($this->viewVariables, $viewVariables);
 
         View::renderTemplate('Admin/grid-settings.twig', $this->viewVariables);
     }

@@ -7,7 +7,7 @@
 {% block container %}
     <div class="grid--container">
         {% for item in gridItems %}
-            {% for key, widgetPath in widgetPaths %}
+            {% for key, widgetPath in dashboardContext.moduleWidgetPaths %}
                 {% if item.moduleId == key %}
                     {% include widgetPath %}
                 {% endif %}
@@ -19,7 +19,8 @@
 
 {% block afterContainer %}
     <script>
-        const pageLoaderActive = {{ pageLoaderActive|json_encode()|raw }};
+        const pageLoaderActive = {{ dashboardContext.autoReload }};
+        const pageLoaderInterval = {{ dashboardContext.autoReloadInterval }};
         const intents = {{ moduleIntents|json_encode()|raw }};
     </script>
 {% endblock %}

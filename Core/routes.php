@@ -14,5 +14,6 @@ return [
     'lesscompiler/index' => ['controller' => 'LessCompilerController', 'action' => 'index'],
     'admin/index' => ['controller' => 'AdminController', 'action' => 'index'],
     'admin/settings' => ['controller' => 'AdminController', 'action' => 'settings'],
+    'admin/saveSettings' => ['controller' => 'AdminController', 'action' => 'saveSettings'],
     'dashboard/index' => ['controller' => 'DashboardController', 'action' => 'index'],
 ];

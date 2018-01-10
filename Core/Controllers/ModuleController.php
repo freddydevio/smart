@@ -4,19 +4,20 @@ namespace Core\Controllers;
 
 use Core\Modules\Modules;
 use Core\Services\AdminContext;
-use Core\Services\AdminContextService;
+use Core\Services\ContextService;
 use Core\Services\FormBuilderService;
 use Core\View\View;
 
 class ModuleController extends Controller
 {
-    /** @var AdminContextService $adminContext */
+    /** @var ContextService $adminContext */
     protected $adminContext;
 
     protected function preDispatch()
     {
         parent::preDispatch();
-        $this->adminContext = $this->container->getService('AdminContextService');
+        $contextService = $this->container->getService('ContextService');
+        $this->adminContext = $contextService->getAdminContext();
     }
 
     public function index()

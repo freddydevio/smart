@@ -5,6 +5,7 @@ namespace Core\Controllers;
 use App\Modules\Clock\Services\ClockDataService;
 use App\Modules\Weather\Services\WeatherDataService;
 use Core\Services\ConfigService;
+use Core\Services\ContextService;
 use Core\Services\GridService;
 use Core\Services\IntentsCollectorService;
 use Core\View\View;
@@ -28,21 +29,13 @@ class DashboardController extends Controller
     {
         $gridItems = $this->gridService->getGridItems();
 
-        foreach ($gridItems as &$gridItem) {
-            $gridItem['data'] = $this->getWidgetDataByModuleId($gridItem['moduleId']);
-        }
+        /** @var ContextService $contextService */
+        $contextService = $this->container->getService('ContextService');
+        $dashboardContext = $contextService->getDashboardContext();
 
-        $moduleWidgetPaths = [
-            '1' => 'Weather/widget.twig',
-            '2' => 'Clock/widget.twig'
-        ];
-
-        $pageLoaderActive = $this->configService->getGeneralConfig('page_loader', false);
-
-        $this->addViewVariables('widgetPaths', $moduleWidgetPaths);
+        $this->addViewVariables('dashboardContext', $dashboardContext);
         $this->addViewVariables('gridItems', $gridItems);
         $this->addViewVariables('moduleIntents', $this->getModuleIntents());
-        $this->addViewVariables('pageLoaderActive', $pageLoaderActive);
 
         View::renderTemplate('Dashboard/index.twig', $this->viewVariables);
     }
@@ -54,20 +47,5 @@ class DashboardController extends Controller
         return $intentsCollector->getModulesIntents();
     }
 
-    private function getWidgetDataByModuleId($moduleId)
-    {
-        $data = null;
 
-        if($moduleId == 1) {
-            /** @var WeatherDataService $weatherService */
-            $weatherService = $this->container->getService('WeatherDataService');
-            $data = $weatherService->getWeatherData();
-        }elseif($moduleId == 2) {
-            /** @var ClockDataService $clockService */
-            $clockService = $this->container->getService('ClockDataService');
-            $data = $clockService->getData();
-        }
-
-        return $data;
-    }
 }

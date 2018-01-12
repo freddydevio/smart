@@ -30,7 +30,7 @@ class RouteCollector
 
     private function getInternalRoutes()
     {
-        $routes = include (APPLICATION_ROOT . '/Core/routes.php');
+        $routes = include_once (APPLICATION_ROOT . '/Core/routes.php');
 
         foreach ($routes as &$route) {
             $route['namespace'] = 'Core';
@@ -47,7 +47,7 @@ class RouteCollector
         )->fetchAll(\PDO::FETCH_ASSOC);
 
         foreach ($modules as $module) {
-            require $module['path'];
+            require_once $module['path'];
 
             $moduleBootstrap = '\\' . $module['name'] . '\\Bootstrap';
             $bootstrap = new $moduleBootstrap;

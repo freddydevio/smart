@@ -1,7 +1,10 @@
 <div class="grid--item news--widget size--{{ item.size }} module--id-{{ item.moduleId }}">
+    <div class="row-content">
+        <i class="zmdi zmdi-rss"></i>
+        <span class="widget-title">Nachrichten</span>
+    </div>
     {% for newsItem in item.data %}
         <div class="row">
-            <i class="zmdi zmdi-rss"></i>
             <span class="title">{{ newsItem.title }}</span>
         </div>
     {% endfor %}

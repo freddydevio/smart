@@ -57,6 +57,7 @@ class Bootstrap
             'ConfigService' => 'Core\Services\ConfigService',
             'LessCompilerService' => 'Core\Services\LessCompilerService',
             'ContextService' => 'Core\Services\ContextService',
+            'Request' => 'Core\Routing\Request',
             'IntentsCollectorService' => 'Core\Services\IntentsCollectorService',
             'WeatherDataService' => 'App\Modules\Weather\Services\WeatherDataService',
             'ClockDataService' => 'App\Modules\Clock\Services\ClockDataService',

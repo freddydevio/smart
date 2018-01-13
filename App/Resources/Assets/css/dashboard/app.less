@@ -1,6 +1,9 @@
 .dashboard {
 	margin: 0;
 	background: black;
+	position: absolute;
+	width: 100%;
+	box-sizing: border-box;
 	.grid--item {
 		background: black;
 	}
@@ -28,7 +31,6 @@ div {
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
-		max-width: 1200px;
 		margin: 2rem auto;
 		.grid--item {
 			padding: .5rem .5rem 4rem .5rem;
@@ -70,6 +72,5 @@ div {
 	position: fixed;
 	height: .7rem;
 	background: white;
-	top: 0; left: 0;
 	transition: width 1s;
 }

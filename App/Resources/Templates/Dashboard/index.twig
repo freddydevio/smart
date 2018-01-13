@@ -1,5 +1,18 @@
 {% extends 'Dashboard/base.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            padding: {{ dashboardContext.windowOffset }}px!important;
+        }
+        .dashboard .grid--container {
+            max-width: {{ dashboardContext.maxWindowWidth }}px!important;
+        }
+    </style>
+{% endblock %}
+
+
 {% block beforeContainer %}
     <div class="page--loader"></div>
 {% endblock %}

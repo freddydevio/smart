@@ -16,6 +16,10 @@ class AdminContext
     private $autoReloadInterval;
     /** @var bool $errorMessages */
     private $errorMessages;
+    /** @var int $windowOffset */
+    private $windowOffset;
+    /** @var int $maxWindowWidth */
+    private $maxWindowWidth;
 
     /**
      * @return array
@@ -80,4 +84,37 @@ class AdminContext
     {
         $this->errorMessages = $errorMessages;
     }
+
+    /**
+     * @return int
+     */
+    public function getWindowOffset(): int
+    {
+        return $this->windowOffset;
+    }
+
+    /**
+     * @param int $windowOffset
+     */
+    public function setWindowOffset(int $windowOffset)
+    {
+        $this->windowOffset = $windowOffset;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMaxWindowWidth(): int
+    {
+        return $this->maxWindowWidth;
+    }
+
+    /**
+     * @param int $maxWindowWidth
+     */
+    public function setMaxWindowWidth(int $maxWindowWidth)
+    {
+        $this->maxWindowWidth = $maxWindowWidth;
+    }
+
 }

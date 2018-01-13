@@ -3,6 +3,7 @@
 namespace Core;
 
 use Core\Routing\Dispatcher;
+use Core\Routing\Request;
 
 class Application
 {

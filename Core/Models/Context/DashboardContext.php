@@ -14,6 +14,10 @@ class DashboardContext
     private $autoReloadInterval;
     /** @var array $moduleWidgetPaths */
     private $moduleWidgetPaths;
+    /** @var int $windowOffset */
+    private $windowOffset;
+    /** @var int $maxWindowWidth */
+    private $maxWindowWidth;
 
     /**
      * @return bool
@@ -62,4 +66,37 @@ class DashboardContext
     {
         $this->moduleWidgetPaths = $moduleWidgetPaths;
     }
+
+    /**
+     * @return int
+     */
+    public function getWindowOffset(): int
+    {
+        return $this->windowOffset;
+    }
+
+    /**
+     * @param int $windowOffset
+     */
+    public function setWindowOffset(int $windowOffset)
+    {
+        $this->windowOffset = $windowOffset;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMaxWindowWidth(): int
+    {
+        return $this->maxWindowWidth;
+    }
+
+    /**
+     * @param int $maxWindowWidth
+     */
+    public function setMaxWindowWidth(int $maxWindowWidth)
+    {
+        $this->maxWindowWidth = $maxWindowWidth;
+    }
+
 }

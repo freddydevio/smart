@@ -28,7 +28,6 @@ class DashboardController extends Controller
     public function index()
     {
         $gridItems = $this->gridService->getGridItems();
-
         /** @var ContextService $contextService */
         $contextService = $this->container->getService('ContextService');
         $dashboardContext = $contextService->getDashboardContext();

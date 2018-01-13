@@ -36,5 +36,19 @@
                 <a class="button" href="/lesscompiler">Jetzt kompilieren</a>
             </div>
         </div>
+        <div class="widget">
+            <span class="widget--title">Dashboard Einstellungen</span>
+            <form method="post" action="/admin/saveSettings">
+                <div class="row-content">
+                    <label for="windowOffset">Fenster Offset (px)</label>
+                    <input type="number" name="window_offset" value="{{ adminContext.windowOffset }}" step="10" min="0" max="300" id="windowOffset">
+                </div>
+                <div class="row-content">
+                    <label for="maxWindowWidth">Maximal Container breite (px)</label>
+                    <input type="number" name="max_window_width" value="{{ adminContext.maxWindowWidth }}" step="10" min="0" max="2000" id="maxWindowWidth">
+                </div>
+                <input type="submit" value="Speichern">
+            </form>
+        </div>
     </div>
 {% endblock %}

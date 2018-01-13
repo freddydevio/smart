@@ -41,6 +41,8 @@ class ContextService extends Service
         $context->setAutoReload($configService->getGeneralConfig('page_reload', true, 'bool'));
         $context->setAutoReloadInterval($configService->getGeneralConfig('page_reload_interval', 60));
         $context->setErrorMessages($configService->getGeneralConfig('show_error_messages', true));
+        $context->setWindowOffset($configService->getGeneralConfig('window_offset', 0, 'int'));
+        $context->setMaxWindowWidth($configService->getGeneralConfig('max_window_width', 1200, 'int'));
 
         $this->adminContext = $context;
     }
@@ -70,6 +72,8 @@ class ContextService extends Service
             '2' => 'Clock/widget.twig',
             '3' => 'News/widget.twig'
         ]);
+        $context->setWindowOffset($configService->getGeneralConfig('window_offset', 0, 'int'));
+        $context->setMaxWindowWidth($configService->getGeneralConfig('max_window_width', 1200, 'int'));
 
         $this->dashboardContext = $context;
     }

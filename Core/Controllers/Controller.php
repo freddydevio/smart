@@ -3,6 +3,7 @@
 namespace Core\Controllers;
 
 use Core\DependencyInjector;
+use Core\Routing\Request;
 
 abstract class Controller
 {
@@ -10,10 +11,13 @@ abstract class Controller
     protected $container;
     /** @var array $viewVariables */
     protected $viewVariables = [];
+    /** @var Request $request */
+    protected $request;
 
     function __construct()
     {
         $this->container = DependencyInjector::getInstance();
+        $this->request = $this->container->getService('Request');
     }
 
     public function __call($method, $args)
